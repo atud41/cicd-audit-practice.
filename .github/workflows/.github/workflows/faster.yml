@@ -32,3 +32,4 @@ jobs:
           echo "Running tests..."
           sleep 10
           echo "Tests finished"
+          
