@@ -1,0 +1,34 @@
+name: Faster Build Example
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Cache example
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache
+          key: practice-cache-${{ github.run_id }}
+
+      - name: Faster simulated work
+        run: |
+          echo "Starting faster build..."
+          sleep 10
+          echo "Build finished"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run tests in parallel
+        run: |
+          echo "Running tests..."
+          sleep 10
+          echo "Tests finished"
